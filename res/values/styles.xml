@@ -1,0 +1,25 @@
+<resources>
+	<!--  Styling from http://droidista.blogspot.fr/2012/08/making-actionbarsherlock-and.html -->
+	
+    <style name="AppTheme" parent="@style/Theme.Sherlock">
+        <item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>
+        <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
+        <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
+    </style>
+
+    <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
+        <item name="titleTextStyle">@style/TitleText</item>
+        <item name="android:titleTextStyle">@style/TitleText</item>
+    </style>
+
+    <!-- "Implementation" of VPI theme. We just set the text size and color. -->
+    <style name="CustomTabPageIndicator" parent="Widget.TabPageIndicator">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TitleText">
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+</resources>

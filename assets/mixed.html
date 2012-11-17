@@ -1,0 +1,41 @@
+<h1>Mixed Life cycle</h1>
+
+<p>
+A service can be both started and bound if you call : <tt>startService( Intent )</tt> and <tt>bindService( Intent, ServiceConnection )</tt>,
+in any order.
+</p>
+
+
+<p>
+A service both started and bound remains bound until you call : <tt>unBindService( Intent, ServiceConnection )</tt> or the binding context finishes.
+You can rotate the device to finish a binding context (the binding context is the activity here).
+</p>
+
+<p>
+If it is unbound, a mixed service (both started and bound) will not get destroyed, but it can be stopped and will then get destroyed.
+</p>
+
+<p>
+A mixed service remains started until you call : <tt>stopService( Intent )</tt> or the service calls <tt>stopSelf()</tt>.
+After this call, the service will not get destroyed.It will get destroyed if and only if it is not bound any more or as soon as it becomes unbound.
+</p>
+
+
+<h1>Binding callbacks</h1>
+
+<p>
+The binding context can use the <tt>ServiceConnection</tt> as a binding callback. It will get notified when it is bound : 
+the <tt>onServiceConnected</tt> will be invoked.
+</p>
+
+<p>
+However, the <tt>onServiceDisconnected</tt> method is not called when the binding context unbinds. It is only called in case 
+of abrupt unbinding such as the binding context being destroyed or the service being killed.
+</p>
+
+<p>
+Moreover, when a service is bound for the second time (or more), neither <tt>onServiceConnected</tt> will be invoked on the <tt>ServiceConnection</tt>, 
+neither <tt>onBind</tt> is called on the <tt>Service</tt>. Nevertheless, multiple bindings are effective.
+</p>
+
+

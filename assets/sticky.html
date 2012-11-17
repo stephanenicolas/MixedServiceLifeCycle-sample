@@ -1,0 +1,38 @@
+<h1>Sticky services</h1>
+
+<p>
+When Android is under memory pressure, it will destroy all application that in the background.
+You can simulate that by "killing" an activity using the task switcher of ICS+.
+</p>
+
+<p>
+The <tt>onStartCommand (Intent , int , int )</tt> returns a value in Service. If you override this method,
+you can get control on the life cycle of the service with respect to memory pressure. A sticky service is a service
+that returns the constant <tt>START_STICKY</tt>. A non-sticky service is a service
+that returns the constant <tt>START_NOT_STICKY</tt>.
+</p>
+
+<p>
+A service is sticky by default. Sticky services will get restarted after such a destruction by the OS.
+You will see toasts appearing after you killed this app when the service is recreated.
+</p>
+
+<p>
+A non sticky service will not get restarted.
+</p>
+
+<p>
+Sticky services, when they are restarted, are restarted using a null intent.
+If you want to keep the intent with which the service was last started, use <tt>START_REDELIVER_INTENT</tt>.
+</p>
+
+<h1>Foreground services</h1>
+
+<p>
+A foreground service is a service that is actively doing something on the device. Android will try to preserve it better under memory pressure.
+A service has to appear in the notification bar when it gets to the foreground.
+</p>
+
+<p>
+A service is set to foreground using <tt>startForeground (int , Notification )</tt>.
+</p>

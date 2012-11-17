@@ -1,0 +1,32 @@
+<h1>Bound Life cycle</h1>
+
+<p>
+A service is bound when you call : <tt>bindService( Intent, ServiceConnection )</tt>.
+</p>
+
+<p>
+It then remains bound until you call : <tt>unBind( Intent )</tt> or the binding context finishes.
+You can rotate the device to finish a binding context (the binding context is the activity here).
+</p>
+
+<p>
+When a (purely) bounded service is not bounded anymore, it is destroyed (stopped).
+</p>
+
+<h1>Binding callbacks</h1>
+
+<p>
+The binding context can use the <tt>ServiceConnection</tt> as a binding callback. It will get notified when it is bound : 
+the <tt>onServiceConnected</tt> will be invoked.
+</p>
+
+<p>
+However, the <tt>onServiceDisconnected</tt> method is not called when the binding context unbinds. It is only called in case 
+of abrupt unbinding such as the binding context being destroyed or the service being killed.
+</p>
+
+<p>
+Moreover, when a service is bound for the second time (or more), neither <tt>onServiceConnected</tt> will be invoked on the <tt>ServiceConnection</tt>, 
+neither <tt>onBind</tt> is called on the <tt>Service</tt>. Nevertheless, multiple bindings are effective.
+</p>
+

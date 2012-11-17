@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">mixedServiceLifeCycle</string>
+    <string name="menu_info">Info</string>
+    <string name="title_activity_main">Service life cycle demo</string>
+    <string name="service_name">Sample Service</string>
+
+</resources>
